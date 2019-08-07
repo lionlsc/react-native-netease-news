@@ -46,8 +46,7 @@ class AmusePage extends Component{
                 }
                 onEndReached={() => { }}
                 onRefresh={() => {
-                    this.props.store.getAmuseData();
-                    return Promise.resolve();
+                    return this.props.store.getAmuseData();
                 }}
             />
         );

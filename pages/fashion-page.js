@@ -46,8 +46,7 @@ class FashionPage extends Component{
                 }
                 onEndReached={() => { }}
                 onRefresh={() => {
-                    this.props.store.getFashionData();
-                    return Promise.resolve();
+                    return this.props.store.getFashionData();
                 }}
             />
         );

@@ -46,8 +46,7 @@ class SportsPage extends Component{
                 }
                 onEndReached={() => { }}
                 onRefresh={() => {
-                    this.props.store.getSportsData();
-                    return Promise.resolve();
+                    return  this.props.store.getSportsData();
                 }}
             />
         );

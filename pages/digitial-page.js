@@ -46,8 +46,7 @@ class DigitialPage extends Component{
                 }
                 onEndReached={() => { }}
                 onRefresh={() => {
-                    this.props.store.getDigitialData();
-                    return Promise.resolve();
+                    return  this.props.store.getDigitialData();
                 }}
             />
         );

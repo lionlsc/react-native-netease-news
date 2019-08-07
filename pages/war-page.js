@@ -46,8 +46,7 @@ class WarPage extends Component{
                 }
                 onEndReached={() => { }}
                 onRefresh={() => {
-                    this.props.store.getWarData();
-                    return Promise.resolve();
+                    return this.props.store.getWarData();
                 }}
             />
         );

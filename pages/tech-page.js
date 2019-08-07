@@ -46,8 +46,7 @@ class TechPage extends Component{
                 }
                 onEndReached={() => { }}
                 onRefresh={() => {
-                    this.props.store.getTechData();
-                    return Promise.resolve();
+                    return this.props.store.getTechData();
                 }}
             />
         );

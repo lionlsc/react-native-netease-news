@@ -38,8 +38,7 @@ class Livelist extends React.Component{
                 }
                 onEndReached={() => { }}
                 onRefresh={() => {
-                    this.props.store.getLiveData();
-                    return Promise.resolve();
+                    return this.props.store.getLiveData();
                 }}
             />
         );

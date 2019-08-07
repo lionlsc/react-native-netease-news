@@ -9,7 +9,7 @@ class Store {
     @observable newsCount=10;
     @action getNewsData(){
         this.startIndex+=10;
-        axios.get(URI.NewsUri(this.startIndex,this.newsCount)).then((res)=>{
+        return axios.get(URI.NewsUri(this.startIndex,this.newsCount)).then((res)=>{
             let news=JSON.parse(res.data.slice(res.data.indexOf("{"),res.data.lastIndexOf("}")+1))
             news=news[store.newsInfo.responseEncode];
             news.forEach((item)=>{
@@ -19,7 +19,7 @@ class Store {
     }
     @action getAmuseData(){
         this.startIndex+=10;
-        axios.get(URI.AmuseUri(this.startIndex,this.newsCount)).then((res)=>{
+       return axios.get(URI.AmuseUri(this.startIndex,this.newsCount)).then((res)=>{
             let news=JSON.parse(res.data.slice(res.data.indexOf("{"),res.data.lastIndexOf("}")+1))
             news=news[store.amuseInfo.responseEncode];
             news.forEach((item)=>{
@@ -30,7 +30,7 @@ class Store {
     }
     @action getSportsData(){
         this.startIndex+=10;
-        axios.get(URI.SportUri(this.startIndex,this.newsCount)).then((res)=>{
+      return  axios.get(URI.SportUri(this.startIndex,this.newsCount)).then((res)=>{
             let news=JSON.parse(res.data.slice(res.data.indexOf("{"),res.data.lastIndexOf("}")+1))
             news=news[store.sportInfo.responseEncode];
             news.forEach((item)=>{
@@ -40,7 +40,7 @@ class Store {
     }
     @action getFinanceData(){
         this.startIndex+=10;
-        axios.get(URI.FinanceUri(this.startIndex,this.newsCount)).then((res)=>{
+      return  axios.get(URI.FinanceUri(this.startIndex,this.newsCount)).then((res)=>{
             let news=JSON.parse(res.data.slice(res.data.indexOf("{"),res.data.lastIndexOf("}")+1))
             news=news[store.financeInfo.responseEncode];
             news.forEach((item)=>{
@@ -50,7 +50,7 @@ class Store {
     }
     @action getWarData() {
         this.startIndex+=10;
-        axios.get(URI.WarUri(this.startIndex,this.newsCount)).then((res)=>{
+      return  axios.get(URI.WarUri(this.startIndex,this.newsCount)).then((res)=>{
             let news=JSON.parse(res.data.slice(res.data.indexOf("{"),res.data.lastIndexOf("}")+1))
             news=news[store.warInfo.responseEncode];
             news.forEach((item)=>{
@@ -60,7 +60,7 @@ class Store {
     }
     @action getTechData(){
         this.startIndex+=10;
-        axios.get(URI.TechUri(this.startIndex,this.newsCount)).then((res)=>{
+      return  axios.get(URI.TechUri(this.startIndex,this.newsCount)).then((res)=>{
             let news=JSON.parse(res.data.slice(res.data.indexOf("{"),res.data.lastIndexOf("}")+1))
             news=news[store.techInfo.responseEncode];
             news.forEach((item)=>{
@@ -70,7 +70,7 @@ class Store {
     }
     @action getMobileData(){
         this.startIndex+=10;
-        axios.get(URI.MobileUri(this.startIndex,this.newsCount)).then((res)=>{
+     return   axios.get(URI.MobileUri(this.startIndex,this.newsCount)).then((res)=>{
             let news=JSON.parse(res.data.slice(res.data.indexOf("{"),res.data.lastIndexOf("}")+1))
             news=news[store.mobileInfo.responseEncode];
             news.forEach((item)=>{
@@ -80,7 +80,7 @@ class Store {
     }
     @action getDigitialData(){
         this.startIndex+=10;
-        axios.get(URI.DigitalUri(this.startIndex,this.newsCount)).then((res)=>{
+    return    axios.get(URI.DigitalUri(this.startIndex,this.newsCount)).then((res)=>{
             let news=JSON.parse(res.data.slice(res.data.indexOf("{"),res.data.lastIndexOf("}")+1))
             news=news[store.digitalInfo.responseEncode];
             news.forEach((item)=>{
@@ -90,7 +90,7 @@ class Store {
     }
     @action getFashionData(){
         this.startIndex+=10;
-        axios.get(URI.FasionUri(this.startIndex,this.newsCount)).then((res)=>{
+     return   axios.get(URI.FasionUri(this.startIndex,this.newsCount)).then((res)=>{
             let news=JSON.parse(res.data.slice(res.data.indexOf("{"),res.data.lastIndexOf("}")+1))
             news=news[store.fasionInfo.responseEncode];
             news.forEach((item)=>{
@@ -100,7 +100,7 @@ class Store {
     }
     @action getGameData(){
         this.startIndex+=10;
-        axios.get(URI.GameUri(this.startIndex,this.newsCount)).then((res)=>{
+      return  axios.get(URI.GameUri(this.startIndex,this.newsCount)).then((res)=>{
             let news=JSON.parse(res.data.slice(res.data.indexOf("{"),res.data.lastIndexOf("}")+1))
             news=news[store.gameInfo.responseEncode];
             news.forEach((item)=>{
@@ -109,14 +109,14 @@ class Store {
         })
     }
     @action getVideoData(){
-        axios.get(URI.VideoUri()).then(response => {
+      return  axios.get(URI.VideoUri()).then(response => {
             response.data["视频"].forEach((item)=>{
                 this.videoData.unshift(item)
             })
         })
     }
     @action getLiveData(){
-        axios.get(URI.LiveUri()).then((response)=>{
+      return  axios.get(URI.LiveUri()).then((response)=>{
             response.data["live_review"].forEach((item)=>{
                if(item.videos[0].length!=0&&item.sourceinfo!=null){
                    item["videoUrl"]=item.videos[0].videoUrl;
@@ -137,6 +137,12 @@ class Store {
     @action clearLive(){
         this.liveData.length=0
         this.startIndex=-10;
+    }
+    @action hideSpinner(){
+        this.showing=false;
+    }
+    @action showSpinner(){
+        this.showing=true;
     }
 }
 export default new Store();

@@ -46,8 +46,7 @@ class FinancePage extends Component{
                 }
                 onEndReached={() => { }}
                 onRefresh={() => {
-                    this.props.store.getFinanceData();
-                    return Promise.resolve();
+                    return this.props.store.getFinanceData();
                 }}
             />
         );

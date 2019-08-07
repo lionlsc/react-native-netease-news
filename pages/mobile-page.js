@@ -46,8 +46,7 @@ class MobilePage extends Component{
                 }
                 onEndReached={() => { }}
                 onRefresh={() => {
-                    this.props.store.getMobileData();
-                    return Promise.resolve();
+                    return this.props.store.getMobileData();
                 }}
             />
         );

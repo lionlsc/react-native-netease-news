@@ -39,8 +39,7 @@ class Videolist extends React.Component{
                 }
                 onEndReached={() => { }}
                 onRefresh={() => {
-                    this.props.store.getVideoData();
-                    return Promise.resolve();
+                    return  this.props.store.getVideoData();
                 }}
             />
         );

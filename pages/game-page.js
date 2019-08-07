@@ -46,8 +46,7 @@ class GamePage extends Component{
                 }
                 onEndReached={() => { }}
                 onRefresh={() => {
-                    this.props.store.getGameData();
-                    return Promise.resolve();
+                    return this.props.store.getGameData();
                 }}
             />
         );
