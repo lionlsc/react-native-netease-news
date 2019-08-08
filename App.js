@@ -133,7 +133,11 @@ class App extends Component{
                                  title="视频"
                                  renderIcon={() => <Icon name="file-video-o" size={20} color="#666"/>}
                                  renderSelectedIcon={() => <Icon name="file-video-o" size={20} color="#C81623"/>}
-                                 onPress={() => {this.setState({ selectedTab: '视频' });this.props.store.showSpinner();}}>
+                                 onPress={() => {this.setState({ selectedTab: '视频' });
+                                  if(this.props.store.videoData.length==0){
+                                      this.props.store.showSpinner();
+                                  }
+                                 }}>
                                  {
                                      <Videolist navigation={this.props.navigation}/>
                                  }
@@ -144,7 +148,11 @@ class App extends Component{
                                  title="直播"
                                  renderIcon={() => <IconM name="live-tv" size={20} color="#666"/>}
                                  renderSelectedIcon={() => <IconM name="live-tv" size={20} color="#C81623"/>}
-                                 onPress={() => {this.setState({ selectedTab: '直播' });this.props.store.showSpinner();}}>
+                                 onPress={() => {this.setState({ selectedTab: '直播' });
+                                 if(this.props.store.liveData.length==0){
+                                     this.props.store.showSpinner();
+                                 }
+                                 }}>
                                  {
                                      <Livelist navigation={this.props.navigation}/>
                                  }
@@ -169,7 +177,7 @@ class Index extends Component{
     render(){
         return (
             <Provider store={Store}>
-                <App />
+                <App navigation={this.props.navigation}/>
             </Provider>
         )
     }

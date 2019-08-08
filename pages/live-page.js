@@ -7,7 +7,6 @@ class Livepage extends React.Component{
     constructor(props) {
         super(props);
     }
-
     render() {
         return (
             <VideoPlayer
