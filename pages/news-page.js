@@ -1,7 +1,8 @@
-import React,{Component} from "react"
+import React, {Component, Fragment} from "react"
 import {View,Text,ScrollView,StyleSheet,TouchableNativeFeedback,FlatList,Image,RefreshControl} from "react-native";
 import {observer,inject} from "mobx-react";
 import { Longlist } from 'beeshell';
+/*import Spinner from "react-native-loading-spinner-overlay";*/
 @inject("store")
 @observer
 class NewsPage extends Component{
@@ -10,16 +11,12 @@ class NewsPage extends Component{
         this.state={
             date:new Date(),
         }
+        this.props.store.showSpinner();
     }
     render() {
         let array=Array.from(this.props.store.newsdata);
         return (
             <View>
-                {/* <Spinner
-                    visible={this.props.store.showing}
-                    textContent={'数据加载中'}
-                    textStyle={{color:"#fff"}}
-                />*/}
                 <Longlist
                     ref={(c) => {
                         this._longlist = c
@@ -60,7 +57,9 @@ class NewsPage extends Component{
     }
 
     componentDidMount(){
-        this.props.store.getNewsData()
+        this.props.store.getNewsData().then(()=>{
+            this.props.store.hideSpinner();
+        })
     }
 }
 const styles=StyleSheet.create({

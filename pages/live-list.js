@@ -44,7 +44,9 @@ class Livelist extends React.Component{
         );
     }
     componentDidMount(){
-        this.props.store.getLiveData();
+        this.props.store.getLiveData().then(()=>{
+            this.props.store.hideSpinner();
+        })
     }
     componentWillUnmount(){
         this.props.store.clearLive();

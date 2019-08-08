@@ -45,7 +45,9 @@ class Videolist extends React.Component{
         );
     }
     componentDidMount(){
-        this.props.store.getVideoData();
+        this.props.store.getVideoData().then(()=>{
+            this.props.store.hideSpinner();
+        })
     }
     componentWillUnmount(){
         this.props.store.clearVideo();
